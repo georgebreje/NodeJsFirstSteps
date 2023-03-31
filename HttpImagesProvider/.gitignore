@@ -1,1 +1,5 @@
 node_modules
+data.txt
+data.json
+errLog.txt
+reqLog.txt
