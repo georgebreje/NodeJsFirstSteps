@@ -50,7 +50,7 @@ const deleteEmployee = (req, res) => {
     }
     const filteredArray = data.employees.filter(emp => emp.id !== parseInt(req.body.id));
     data.setEmployees([...filteredArray]);
-    res.json();
+    res.json(data.employees);
 }
 
 module.exports = {
