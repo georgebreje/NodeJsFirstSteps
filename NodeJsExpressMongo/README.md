@@ -1,0 +1,1 @@
+[Here](https://documenter.getpostman.com/view/17846788/2s93RUvCAe) is the api documentation for calls in Postman
