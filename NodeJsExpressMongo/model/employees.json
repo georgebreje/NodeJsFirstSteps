@@ -1,17 +1,1 @@
-[
-    {
-        "id": 1,
-        "firstname": "George",
-        "lastname": "Breje"
-      },
-      {
-        "id": 2,
-        "firstname": "Camelia",
-        "lastname": "Calugareanu"
-      },
-      {
-        "id": 3,
-        "firstname": "Mario",
-        "lastname": "Barosanu"
-      }
-]
+[{"id":1,"firstname":"George","lastname":"Breje"},{"id":2,"firstname":"Camelia","lastname":"Calugareanu"},{"id":3,"firstname":"Mario","lastname":"Barosanu"},{"id":4,"firstname":"aaaaaa","lastname":"bbbbbbb"}]

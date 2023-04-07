@@ -3,6 +3,9 @@ const data = {
     setEmployees: function (data) { this.employees = data }
 };
 
+const path = require('path');
+const fsPromises = require('fs').promises;
+
 const getAllEmployees = (req, res) => {
     res.json(data.employees);
 }
@@ -15,7 +18,7 @@ const getEmployee = (req, res) => {
     res.json(employee);
 }
 
-const createNewEmployee = (req, res) => {
+const createNewEmployee = async (req, res) => {
     const newEmployee = {
         id: data.employees[data.employees.length -1].id + 1 || 1,
         firstname: req.body.firstname,
@@ -27,6 +30,10 @@ const createNewEmployee = (req, res) => {
     }
 
     data.setEmployees([...data.employees, newEmployee]);
+    await fsPromises.writeFile(
+        path.join(__dirname, '..', 'model', 'employees.json'),
+        JSON.stringify(data.employees)
+    );
     res.status(201).json(data.employees);
 }
 
