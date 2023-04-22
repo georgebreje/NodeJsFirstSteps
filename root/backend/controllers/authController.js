@@ -37,14 +37,14 @@ const handleLogin = async (req, res) => {
                 ? foundUser.refreshToken
                 : foundUser.refreshToken.filter(rt => rt !== cookies.jwt);
 
-        if (cookies.jwt) res.clearCookie('jwt', { httpOnly: true, sameSite: 'None' });
+        if (cookies?.jwt) res.clearCookie('jwt', { httpOnly: true, sameSite: 'None' });
 
         // Saving refreshToken with current user
         foundUser.refreshToken = [...newRefreshTokenArray, newRefreshToken];
         const result = await foundUser.save();
         console.log(result);
 
-        res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
+        res.cookie('jwt', newRefreshToken, { httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
 
         res.json({ accessToken });
     } else {
