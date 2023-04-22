@@ -2,7 +2,7 @@
   "name": "nodejsexpressmongo",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "server.ts",
   "scripts": {
     "start": "node server",
     "dev": "nodemon server"
@@ -17,8 +17,14 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
+    "mongodb": "^5.3.0",
     "mongoose": "^7.0.3",
     "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.13",
+    "typescript": "^5.0.4"
   }
 }

@@ -67,7 +67,7 @@ const deleteEmployee = async (req, res) => {
     res.json(result);
 }
 
-module.exports = {
+export = {
     getAllEmployees,
     getEmployee,
     createNewEmployee,

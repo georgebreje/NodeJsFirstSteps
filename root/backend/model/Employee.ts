@@ -1,7 +1,13 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import { Schema, model, connect } from 'mongoose';
 
-const employeeSchema = new Schema({
+const mongoose = require('mongoose');
+
+interface IEmployee {
+    firstname: string;
+    lastname: string;
+}
+
+const employeeSchema = new Schema<IEmployee>({
     firstname: {
         type: String,
         required: true

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const employeesController = require('../../controllers/employeesController');
+import employeesController from '../../controllers/employeesController';
 const ROLES_LIST = require('../../config/roles_list');
 const verifyRoles = require('../../middleware/verifyRoles');
 
@@ -13,4 +13,4 @@ router.route('/')
 router.route('/:id')
     .get(employeesController.getEmployee);
 
-module.exports = router;
+export default router;

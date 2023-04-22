@@ -13,6 +13,7 @@ const credentials = require('./middleware/credentials');
 const mongoose = require('mongoose');
 const connectDB = require('./config/dbConn');
 const PORT = process.env.PORT || 3500;
+import employeesRouter from './routes/api/employees';
 
 connectDB();
 
@@ -40,7 +41,7 @@ app.use('/refresh', require('./routes/refresh'));
 app.use('/logout', require('./routes/logout'));
 
 app.use(verifyJWT);
-app.use('/api/employees', require('./routes/api/employees'));
+app.use('/api/employees', employeesRouter);
 
 app.all('*', (req, res) => {
     res.status(404);
