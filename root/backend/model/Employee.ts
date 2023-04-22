@@ -18,4 +18,4 @@ const employeeSchema = new Schema<IEmployee>({
     }
 });
 
-module.exports = mongoose.model('Employee', employeeSchema);
+export default model<IEmployee>('Employee', employeeSchema);
