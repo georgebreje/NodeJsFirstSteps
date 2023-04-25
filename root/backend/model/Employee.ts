@@ -1,6 +1,4 @@
-import { Schema, model, connect } from 'mongoose';
-
-const mongoose = require('mongoose');
+import { Schema, model } from 'mongoose';
 
 interface IEmployee {
     firstname: string;

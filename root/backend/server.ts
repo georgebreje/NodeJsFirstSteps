@@ -14,6 +14,8 @@ const mongoose = require('mongoose');
 const connectDB = require('./config/dbConn');
 const PORT = process.env.PORT || 3500;
 import employeesRouter from './routes/api/employees';
+import usersRouter from './routes/api/users';
+
 
 connectDB();
 
@@ -42,6 +44,7 @@ app.use('/logout', require('./routes/logout'));
 
 app.use(verifyJWT);
 app.use('/api/employees', employeesRouter);
+app.use('/api/users', usersRouter);
 
 app.all('*', (req, res) => {
     res.status(404);

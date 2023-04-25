@@ -1,5 +1,12 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import { Schema, model } from 'mongoose';
+import { UserRoles } from './UserRoles';
+
+interface IUser {
+    username: string;
+    password: string;
+    roles: UserRoles;
+    refreshToken: string[];
+}
 
 const userSchema = new Schema({
     username: {
@@ -21,4 +28,4 @@ const userSchema = new Schema({
     refreshToken: [String]
 });
  
-module.exports = mongoose.model('User', userSchema);
+export default model<IUser>('User', userSchema);
