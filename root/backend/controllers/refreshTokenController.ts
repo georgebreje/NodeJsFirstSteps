@@ -1,4 +1,4 @@
-const User = require('../model/User');
+import User from '../model/User';
 const jwt = require('jsonwebtoken');
 
 const handleRefreshToken = async (req, res) => {
