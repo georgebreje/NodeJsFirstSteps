@@ -28,3 +28,9 @@ type User = {
         "bs": string
     }
 }
+
+type Employee = {
+    "_id": string,
+    "firstname": string,
+    "lastname": string
+}

@@ -10,7 +10,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className}  bg-blue-300`}>
         <nav>
           <h1>My Nav bar</h1>
         </nav>
