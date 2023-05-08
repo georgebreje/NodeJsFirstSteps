@@ -1,25 +1,31 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server'
 
-const DATA_SOURCE_URL: string = "https://jsonplaceholder.typicode.com/todos";
-const API_KEY: string = process.env.DATA_API_KEY as string;
+const DATA_SOURCE_URL = "https://jsonplaceholder.typicode.com/todos"
 
-export async function GET() {
-    const res = await fetch(DATA_SOURCE_URL);
+const API_KEY: string = process.env.DATA_API_KEY as string
 
-    if (!res.ok) return undefined;
+export async function GET(request: Request) {
+    const origin = request.headers.get('origin')
 
-    const todos: Todo[] = await res.json();
+    const res = await fetch(DATA_SOURCE_URL)
 
-    return NextResponse.json(todos);
+    const todos: Todo[] = await res.json()
+
+    return new NextResponse(JSON.stringify(todos), {
+        headers: {
+            'Access-Control-Allow-Origin': origin || "*",
+            'Content-Type': 'application/json',
+        }
+    })
 }
 
 export async function POST(request: Request) {
-    const { userId, title }: Partial<Todo> = await request.json();
+    const { userId, title }: Partial<Todo> = await request.json()
 
-    if (!userId || !title) return NextResponse.json({ "message": "Missing required data." });
+    if (!userId || !title) return NextResponse.json({ "message": "Missing required data" })
 
     const res = await fetch(DATA_SOURCE_URL, {
-        method: 'DELETE',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'API-Key': API_KEY
@@ -27,11 +33,11 @@ export async function POST(request: Request) {
         body: JSON.stringify({
             userId, title, completed: false
         })
-    });
+    })
 
-    const newTodo: Todo = await res.json();
+    const newTodo: Todo = await res.json()
 
-    return NextResponse.json(newTodo);
+    return NextResponse.json(newTodo)
 }
 
 export async function PUT(request: Request) {
@@ -56,9 +62,9 @@ export async function PUT(request: Request) {
 }
 
 export async function DELETE(request: Request) {
-    const { id }: Partial<Todo> = await request.json();
+    const { id }: Partial<Todo> = await request.json()
 
-    if (!id) return NextResponse.json({ "message": "Todo id is required" });
+    if (!id) return NextResponse.json({ "message": "Todo id required" })
 
     await fetch(`${DATA_SOURCE_URL}/${id}`, {
         method: 'DELETE',
@@ -66,7 +72,7 @@ export async function DELETE(request: Request) {
             'Content-Type': 'application/json',
             'API-Key': API_KEY
         }
-    });
+    })
 
-    return NextResponse.json({ "message": `Todo ${id} deleted` });
+    return NextResponse.json({ "message": `Todo ${id} deleted` })
 }
