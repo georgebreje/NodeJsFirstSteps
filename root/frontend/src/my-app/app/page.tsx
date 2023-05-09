@@ -15,7 +15,7 @@ export const metadata = {
 export default function Home() {
   return (
     <main>
-      <h1>hello world</h1>
+      <h1 className="text-gray-900 dark:text-white">hello world</h1>
       <Link href="/about">Go to about page</Link>
       <p>
         <Link href="/users">Users</Link>
